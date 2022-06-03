@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="app.cheese_listing.description.property_filter"
+                parent="ApiPlatform\Core\Serializer\Filter\PropertyFilter">
+            <tag name="api_platform.filter"/>
+        </service>
+
+        <service
+                id="app.cheese_listing.published_boolean_filter"
+                parent="api_platform.doctrine.orm.boolean_filter">
+            <argument type="collection">
+                <argument key="isPublished">~</argument>
+            </argument>
+            <tag name="api_platform.filter"/>
+        </service>
+
+        <service
+                id="app.cheese_listing.title.search_filter"
+                parent="api_platform.doctrine.orm.search_filter">
+            <argument type="collection">
+                <argument key="title">partial</argument>
+                <argument key="description">partial</argument>
+            </argument>
+            <tag name="api_platform.filter"/>
+        </service>
+
+        <service
+                id="app.cheese_listing.price.range_filter"
+                parent="api_platform.doctrine.orm.range_filter">
+            <argument type="collection">
+                <argument key="price">between</argument>
+            </argument>
+            <tag name="api_platform.filter"/>
+        </service>
+    </services>
+</container>

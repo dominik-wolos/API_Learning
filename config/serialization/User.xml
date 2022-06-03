@@ -3,29 +3,18 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
 >
-    <class name="App\Entity\CheeseListing">
+    <class name="App\Entity\User">
 
-        <attribute name="title">
-            <group>cheese_listing:read</group>
-            <group>cheese_listing:write</group>
+        <attribute name="email">
+            <group>user:read</group>
+            <group>user:write</group>
         </attribute>
-        <attribute name="description">
-            <group>cheese_listing:read</group>
-            <group>cheese_listing:write</group>
+        <attribute name="password">
+            <group>user:write</group>
         </attribute>
-        <attribute name="price">
-            <group>cheese_listing:read</group>
-            <group>cheese_listing:write</group>
+        <attribute name="username">
+            <group>user:read</group>
+            <group>user:write</group>
         </attribute>
-        <attribute name="createdAtAgo">
-            <group>cheese_listing:read</group>
-        </attribute>
-        <attribute name="textDescription" serialized-name="description">
-            <group>cheese_listing:write</group>
-        </attribute>
-        <attribute name="shortDescription">
-            <group>cheese_listing:read</group>
-        </attribute>
-
     </class>
 </serializer>

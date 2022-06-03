@@ -3,24 +3,27 @@
                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-<class name="App\Entity\CheeseListing">
-        <property name="title">
+<class name="App\Entity\User">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>email</value>
+                <value>username</value>
+            </option>
+        </constraint>
+
+
+        <property name="username">
             <constraint name="NotBlank"/>
-            <constraint name="Length">
+<!--            <constraint name="Length">
                 <option name="min">2</option>
                 <option name="max">40</option>
                 <option name="maxMessage">Describe your cheese in 40 chars or less</option>
-            </constraint>
+            </constraint>-->
         </property>
-        <property name="description">
-            <constraint name="NotBlank">
-                <option name="message">Description cannot be blank</option>
-            </constraint>
+        <property name="email">
+            <constraint name="NotBlank"/>
+            <constraint name="Email"/>
         </property>
-        <property name="price">
-            <constraint name="NotBlank">
-                <option name="message">Price cannot be blank</option>
-            </constraint>
-        </property>
+
     </class>
 </constraint-mapping>

@@ -4,8 +4,8 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="https://api-platform.com/schema/metadata
         https://api-platform.com/schema/metadata/metadata-2.0.xsd">
-    <resource class="App\Entity\CheeseListing"
-              shortName="CheeseListing"
+    <resource class="App\Entity\User"
+              shortName="User"
     >
         <attribute name="pagination_items_per_page">5</attribute>
         <attribute name="formats">
@@ -17,68 +17,65 @@
         </attribute>
         <attribute name="groups">
             <attribute name="normalization_context">
-                <attribute>cheese_listing:read</attribute>
+                <attribute>user:read</attribute>
             </attribute>
             <attribute name="denormalization_context">
-                <attribute>cheese_listing:write</attribute>
+                <attribute>user:write</attribute>
             </attribute>
         </attribute>
         <collectionOperations>
-            <collectionOperation name="get_cheese_listings">
+            <collectionOperation name="get_users">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/cheeses</attribute>
-                <attribute name="filters">
-                    <attribute>app.cheese_listing.published_boolean_filter</attribute>
-                    <attribute>app.cheese_listing.title.search_filter</attribute>
-                    <attribute>app.cheese_listing.price.range_filter</attribute>
-                    <attribute>app.cheese_listing.description.property_filter</attribute>
-                </attribute>
+                <attribute name="path">/users</attribute>
+
                 <attribute name="normalization_context">
                     <attribute name="groups">
-                        <attribute>cheese_listing:read</attribute>
+                        <attribute>user:read</attribute>
                     </attribute>
                 </attribute>
             </collectionOperation>
-            <collectionOperation name="add_cheese_listings">
+            <collectionOperation name="add_user">
                 <attribute name="method">POST</attribute>
-                <attribute name="path">/cheeses</attribute>
+                <attribute name="path">/users</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">
-                        <attribute>cheese_listing:write</attribute>
+                        <attribute>user:write</attribute>
                     </attribute>
                 </attribute>
             </collectionOperation>
         </collectionOperations>
         <itemOperations>
-            <itemOperation name="get_cheese_listing">
+            <itemOperation name="get_user">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="path">/user/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">
-                        <attribute>cheese_listing:read</attribute>
+                        <attribute>user:read</attribute>
                     </attribute>
                 </attribute>
             </itemOperation>
-            <itemOperation name="put_cheese_listing">
+            <itemOperation name="delete_user">
+                <attribute name="method">DELETE</attribute>
+            </itemOperation>
+            <itemOperation name="put_user">
                 <attribute name="method">PUT</attribute>
-                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="path">/user/{id}</attribute>
                 <attribute name="denormalization_context">
                     <attribute name="groups">
-                        <attribute>cheese_listing:write</attribute>
+                        <attribute>user:write</attribute>
                     </attribute>
                 </attribute>
             </itemOperation>
-            <itemOperation name="patch_cheese_listing">
+            <itemOperation name="patch_user">
                 <attribute name="method">PATCH</attribute>
-                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="path">/user/{id}</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">
-                        <attribute>cheese_listing:write</attribute>
+                        <attribute>user:write</attribute>
                     </attribute>
                 </attribute>
             </itemOperation>
         </itemOperations>
-
 
     </resource>
 </resources>

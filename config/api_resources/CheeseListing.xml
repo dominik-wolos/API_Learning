@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata
+        https://api-platform.com/schema/metadata/metadata-2.0.xsd">
+    <resource class="App\Entity\CheeseListing"
+              shortName="CheeseListing"
+    >
+        <attribute name="pagination_items_per_page">5</attribute>
+        <attribute name="formats">
+            <attribute>jsonld</attribute>
+            <attribute>json</attribute>
+            <attribute>jsonhal</attribute>
+            <attribute>html</attribute>
+            <attribute name="csv">text/csv</attribute>
+        </attribute>
+        <attribute name="groups">
+            <attribute name="normalization_context">
+                <attribute>cheese_listing:read</attribute>
+            </attribute>
+            <attribute name="denormalization_context">
+                <attribute>cheese_listing:write</attribute>
+            </attribute>
+        </attribute>
+        <collectionOperations>
+            <collectionOperation name="get_cheese_listings">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/cheeses</attribute>
+                <attribute name="filters">
+                    <attribute>app.cheese_listing.published_boolean_filter</attribute>
+                    <attribute>app.cheese_listing.title.search_filter</attribute>
+                    <attribute>app.cheese_listing.price.range_filter</attribute>
+                    <attribute>app.cheese_listing.description.property_filter</attribute>
+                </attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>cheese_listing:read</attribute>
+                    </attribute>
+                </attribute>
+            </collectionOperation>
+            <collectionOperation name="add_cheese_listings">
+                <attribute name="method">POST</attribute>
+                <attribute name="path">/cheeses</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">
+                        <attribute>cheese_listing:write</attribute>
+                    </attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+        <itemOperations>
+            <itemOperation name="get_cheese_listing">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>cheese_listing:read</attribute>
+                    </attribute>
+                </attribute>
+            </itemOperation>
+<!--            <itemOperation name="delete_cheese_listing">-->
+<!--                <attribute name="method">DELETE</attribute>-->
+<!--                <attribute name="method">/cheese/{id}</attribute>-->
+<!--            </itemOperation>-->
+            <itemOperation name="put_cheese_listing">
+                <attribute name="method">PUT</attribute>
+                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">
+                        <attribute>cheese_listing:write</attribute>
+                    </attribute>
+                </attribute>
+            </itemOperation>
+            <itemOperation name="patch_cheese_listing">
+                <attribute name="method">PATCH</attribute>
+                <attribute name="path">/cheese/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>cheese_listing:write</attribute>
+                    </attribute>
+                </attribute>
+            </itemOperation>
+        </itemOperations>
+
+
+    </resource>
+</resources>
